@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>RSTI测试第一弹｜找到你的隐藏形态</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+        background: #ffffff;
+        color: #333;
+        padding: 16px;
+        max-width: 640px;
+        margin: 0 auto;
+        display: none;
+    }
+    .header-box {
+        margin: 20px 0 24px;
+        text-align: center;
+    }
+    .tag {
+        display: inline-block;
+        background: #f7c8ef;
+        color: #b83894;
+        font-size: 14px;
+        padding: 5px 12px;
+        border-radius: 99px;
+        margin-bottom: 12px;
+    }
+    h1 {
+        font-size: 28px;
+        color: #332211;
+        line-height: 1.35;
+        margin-bottom: 8px;
+    }
+    .intro-text {
+        font-size: 15px;
+        color: #777;
+        line-height: 1.6;
+    }
+    .progress-text {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .q-card {
+        background: #22b8dd;
+        border-radius: 18px;
+        padding: 22px 20px;
+        margin-bottom: 18px;
+        color: #fff;
+    }
+    .q-title {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 18px;
+        line-height: 1.5;
+    }
+    .opt-item {
+        background: #ffffffdd;
+        color: #222;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 11px;
+        cursor: pointer;
+        transition: 0.22s;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .opt-item.active {
+        background: #ffd2ec;
+    }
+    .btn-main {
+        width: 100%;
+        background: #d83b98;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 15px;
+        font-size: 17px;
+        font-weight: bold;
+        margin: 12px 0 20px;
+    }
+    .btn-copy {
+        width: 100%;
+        background: #222222;
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        padding: 14px;
+        font-size: 16px;
+        margin-top: 14px;
+    }
+    .result-wrap {
+        display: none;
+    }
+    .result-card {
+        background: #503222;
+        color: #fff;
+        border-radius: 20px;
+        padding: 26px 22px;
+    }
+    .res-title {
+        text-align: center;
+        font-size: 23px;
+        margin-bottom: 18px;
+        color: #ffb8e4;
+    }
+    .res-name {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #ffb8e4;
+        margin-bottom: 10px;
+    }
+    .res-score {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #88ddff;
+    }
+    .res-desc {
+        font-size: 16px;
+        line-height: 1.8;
+        white-space: pre-wrap;
+    }
+    .copy-tip {
+        text-align: center;
+        color: #00b960;
+        margin-top: 10px;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+    <div class="header-box">
+        <span class="tag">RSTI测试 · 第一弹</span>
+        <h1>找到你的隐藏形态</h1>
+        <p class="intro-text">Hihi！凭第一直觉作答，完成测试解锁你的隐藏形态✨</p >
+    </div>
+
+    <div class="progress-text">已选择：<span id="selCount">0</span>/3题</div>
+
+    <!-- Q1 -->
+    <div class="q-card" data-q="q1">
+        <div class="q-title">你打开门发现今天的太阳是从西边出来的，你的第一反应是：</div>
+        <div class="opt-item" data-val="1">A 终于有人比我起得早了（+1分）</div>
+        <div class="opt-item" data-val="2">B 今日不宜出门（+2分）</div>
+        <div class="opt-item" data-val="3">C 那我也从西边出门试试（+3分）</div>
+        <div class="opt-item" data-val="4">D 我分不清东南西北（+4分）</div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card" data-q="q2">
+        <div class="q-title">走在路上，突然发现自己是一根电线杆，你的第一个念头是：</div>
+        <div class="opt-item" data-val="1">A 还好今天没约人（+1分）</div>
+        <div class="opt-item" data-val="2">B 终于不用早起了（+2分）</div>
+        <div class="opt-item" data-val="3">C 会有人贴寻人启事找我吗（+3分）</div>
+        <div class="opt-item" data-val="4">D 先看看自己身上有没有小广告（+4分）</div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card" data-q="q3">
+        <div class="q-title">你走进超市发现所有商品标签上都写着同一句话“你确定要买这个吗”，你会：</div>
+        <div class="opt-item" data-val="1">A 确定，我就是确定才来买的（+1分）</div>
+        <div class="opt-item" data-val="2">B 放回去换个超市（+2分）</div>
+        <div class="opt-item" data-val="3">C 不确定，所以我都买（+3分）</div>
+        <div class="opt-item" data-val="4">D 问收银员她确不确定（+4分）</div>
+    </div>
+
+    <button class="btn-main" id="calcBtn">查看我的隐藏形态</button>
+
+    <div class="result-wrap" id="resultWrap">
+        <div class="result-card">
+            <div class="res-title">✨你的隐藏形态✨</div>
+            <div class="res-name" id="resName"></div>
+            <div class="res-score" id="resScore"></div>
+            <div class="res-desc" id="resDesc"></div>
+        </div>
+        <button class="btn-copy" id="copyXhsBtn">复制小红书分享口令</button>
+        <div class="copy-tip" id="copyTip">✅口令复制成功！打开小红书即可查看</div>
+    </div>
+
+<script>
+(function(){
+    //访问密码
+    const correctPassword = "1997";
+    let passOk = false;
+
+    while(!passOk){
+        let inputText = prompt("请输入访问密码：");
+        if(inputText === null){
+            break;
+        }
+        if(inputText.trim() === correctPassword){
+            passOk = true;
+            document.body.style.display = "block";
+        }else{
+            alert("密码错误，请重新输入！");
+        }
+    }
+    if(!passOk){
+        return;
+    }
+
+    const optList = document.querySelectorAll('.opt-item');
+    const calcBtn = document.getElementById('calcBtn');
+    const resultWrap = document.getElementById('resultWrap');
+    const resName = document.getElementById('resName');
+    const resScore = document.getElementById('resScore');
+    const resDesc = document.getElementById('resDesc');
+    const copyXhsBtn = document.getElementById('copyXhsBtn');
+    const copyTip = document.getElementById('copyTip');
+    const selCountEl = document.getElementById('selCount');
+
+    let answer = {};
+    let sharePassword = "";
+
+    //丰富俏皮的结论文案，已移除图片
+    const textMap = {
+        "冰镇西瓜":`🍉纯粹快乐乐天派
+主打及时行乐，人间开心选手一枚！
+你的心态超级松弛，不爱内耗，遇事主打一个“船到桥头自然直”。
+天大的事也很难把你打倒，该吃吃该喝喝，烦恼统统往后挪。
+你自带治愈buff，和你相处会觉得特别舒服轻松。
+偶尔有点摆烂小惰性，但该认真的时候也绝不掉链子。
+生活的小美好总能被你捕捉到，快乐就是你的本命底色！
+#吃喝治愈一切，随性摆烂，烦恼一键清空`,
+
+        "降噪耳机":`🎧天生自带独处结界
+不爱扎堆凑热闹，享受属于自己的小世界。
+不是高冷，只是比起无效社交，你更愿意和自己相处。
+你心思细腻，观察力拉满，很多事情心里门儿清，但不爱到处诉说。
+可以合群，但更偏爱独处充电，热闹过后需要自己静静回血。
+懂你的人会特别珍惜你，不懂的还误以为你有点慢热疏离。
+情绪大多向内消化，偶尔也别忘了找人倾诉，别什么都自己扛哦！
+#在热闹世界里保留自己`,
+
+        "复古磁带":`📼慢节奏怀旧选手
+不追潮流不赶热梗，是个念旧又温柔的浪漫分子。
+你不太喜欢快节奏的内卷，偏爱慢悠悠感受生活的质感。
+旧故事、老物件、老情绪很容易戳中你的内心，很重感情。
+做事稳扎稳打，不喜欢跟风随大流，有自己独特的审美与坚持。
+看起来温和佛系，内心却有自己的倔强，认定的事不会轻易动摇。
+不喜欢慌慌张张，慢慢来，对你来说就是最好的状态。
+#偏爱慢悠悠过日子，自带小众氛围感`,
+
+        "涂鸦颜料":`🎨脑洞离谱不受约束
+爱整活，不按常理出牌，古灵精怪就是你的代名词！
+你的脑回路清奇，想象力爆棚，总能冒出别人想不到的奇妙点子。
+讨厌条条框框束缚，拒绝被定义，喜欢新鲜好玩的一切事物。
+性格跳脱有趣，玩得开，是朋友堆里的快乐气氛制造机。
+偶尔会有点跳脱随性，容易三分钟热度，但热爱的时候火力全开。
+世界在你眼里有一万种打开方式，大胆做自己就超酷！
+#随时随地解锁新鲜玩法`
+    };
+
+    for (let i = 0; i < optList.length; i++) {
+        optList[i].addEventListener('click', function () {
+            const qDom = this.closest('.q-card');
+            const qKey = qDom.getAttribute('data-q');
+            const siblings = qDom.querySelectorAll('.opt-item');
+            for (let j = 0; j < siblings.length; j++) {
+                siblings[j].classList.remove('active');
+            }
+            this.classList.add('active');
+            answer[qKey] = Number(this.getAttribute('data-val'));
+            updateSelectCount();
+        }, false);
+    }
+
+    function updateSelectCount() {
+        selCountEl.innerText = Object.keys(answer).length;
+    }
+
+    calcBtn.addEventListener('click', function () {
+        const allKeys = ['q1', 'q2', 'q3'];
+        let done = true;
+        for (let k of allKeys) {
+            if (answer[k] === undefined) done = false;
+        }
+        if (!done) {
+            alert("请完成全部3道题目！");
+            return;
+        }
+        let totalScore = answer.q1 + answer.q2 + answer.q3;
+        let name, desc;
+        if (totalScore >= 3 && totalScore <= 5) {
+            name = "冰镇西瓜";
+            desc = textMap["冰镇西瓜"];
+        } else if (totalScore >= 6 && totalScore <= 7) {
+            name = "降噪耳机";
+            desc = textMap["降噪耳机"];
+        } else if (totalScore >= 8 && totalScore <= 9) {
+            name = "复古磁带";
+            desc = textMap["复古磁带"];
+        } else {
+            name = "涂鸦颜料";
+            desc = textMap["涂鸦颜料"];
+        }
+        resName.innerText = name;
+        resScore.innerText = "你的得分：" + totalScore + "分";
+        resDesc.innerText = desc;
+
+        resultWrap.style.display = "block";
+        sharePassword =
+            "RSTI测试第一弹！找到你的隐藏形态 Hihi！这里是你的隐藏形态小测试✨\n" +
+            "我的结果：" + name + "（" + totalScore + "分）\n" +
+            desc + "\n" +
+            "把口令拷走，打开【小红书】查看详情~";
+        setTimeout(function () {
+            resultWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+    }, false);
+
+    copyXhsBtn.addEventListener('click', async function () {
+        try {
+            await navigator.clipboard.writeText(sharePassword);
+            copyTip.style.display = "block";
+            setTimeout(function () { copyTip.style.display = "none"; }, 2200);
+        } catch (e) {
+            prompt("复制下面全部口令，手动复制：", sharePassword);
+        }
+    }, false);
+})();
+</script>
+</body>
+</html>
